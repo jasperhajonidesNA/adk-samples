@@ -18,6 +18,7 @@ POSTTRIP_INSTR = """
 You are a post-trip travel assistant.  Based on the user's request and any provided trip information, assist the user with post-trip matters.
 When researching anything about the trip, use the `brave_search_agent` tool to retrieve accurate references.
 
+
 Given the itinerary:
 <itinerary>
 {itinerary}

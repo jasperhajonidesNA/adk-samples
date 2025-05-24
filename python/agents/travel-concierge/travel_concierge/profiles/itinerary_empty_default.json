@@ -1,18 +1,18 @@
 {
   "state": {
     "user_profile" : {
-      "passport_nationality" : "US Citizen",
+      "passport_nationality" : "Dutch Citizen",
       "seat_preference": "window",
-      "food_preference": "vegan",
+      "food_preference": "vegetarian",
       "allergies": [],
-      "likes": [],
-      "dislikes": [],
-      "price_sensitivity": [],    
+      "likes": ["original activities", "unique experiences"],
+      "dislikes": ["tourist traps", "overcrowded places", "getting up really early for a flight"],
+      "price_sensitivity": ["mid-range", "not crazy expensive"],    
       "home":
       {
           "event_type": "home",
-          "address": "6420 Sequence Dr #400, San Diego, CA 92121, United States",
-          "local_prefer_mode": "drive"
+          "address": "Brondesbury road, NW6 6AS, London, United Kingdom",
+          "local_prefer_mode": "Public Transport or cycling"
       }    
     },
     "itinerary": {},
@@ -20,13 +20,13 @@
     "destination" : "",
     "start_date" : "",
     "end_date" : "",
-    "outbound_flight_selection" : "",
-    "outbound_seat_number" : "",
-    "return_flight_selection" : "",
-    "return_seat_number" : "",
-    "hotel_selection" : "",
-    "room_selection" : "",
-    "poi" : "",
+    "outbound_flight_selection" : "Economy",
+    "outbound_seat_number" : "2",
+    "return_flight_selection" : "Economy",
+    "return_seat_number" : "2",
+    "hotel_selection" : "4 star",
+    "room_selection" : "2",
+    "poi" : "Activities that are unique to the destination",
     "itinerary_datetime" : "",
     "itinerary_start_date" : "",
     "itinerary_end_date" : ""  

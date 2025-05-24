@@ -83,6 +83,9 @@ flight_search_agent = Agent(
     output_schema=types.FlightsSelection,
     output_key="flight",
     generate_content_config=types.json_response_config,
+    tools=[
+        brave_search_tool,
+    ],
 )
 
 

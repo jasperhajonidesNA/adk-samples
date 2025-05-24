@@ -157,7 +157,28 @@ from the root project directory:
     ```bash
     adk web
     ```
-    Select the customer_service from the dropdown
+Select the customer_service from the dropdown
+
+## Monitoring with LangSmith
+
+You can optionally trace all agent interactions and tool calls using
+[LangSmith](https://smith.langchain.com/). To enable monitoring:
+
+1. Install the `langsmith` package in your environment:
+
+   ```bash
+   poetry add langsmith
+   ```
+
+2. Set the following environment variables (for example in your `.env` file):
+
+   ```bash
+   LANGCHAIN_API_KEY=<your-api-key>
+   LANGSMITH_PROJECT=customer_service
+   ```
+
+When these values are present, the agent will send traces to your LangSmith
+project so you can inspect usage statistics and tool invocations.
 
 ### Example Interaction
 
