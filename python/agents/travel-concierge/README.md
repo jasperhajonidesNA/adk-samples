@@ -511,8 +511,26 @@ Users are solely responsible for any further development, testing, security hard
 
 This repository also provides a minimal LangGraph wrapper around the Travel Concierge agents. Once dependencies are installed you can run it directly:
 
+
 ```bash
 python -m travel_concierge.agent_langgraph
 ```
 
-The script executes the sub‑agents sequentially and prints the final state when finished.
+Or import the compiled graph in your own code:
+
+```python
+import asyncio
+from travel_concierge.agent_langgraph import root_agent_graph
+
+async def main():
+    # If your graph’s nodes expect more in the state, seed it here.
+    initial_state = {}  # or e.g. {"itinerary": {}}
+
+    # Use the async entrypoint
+    final_state = await root_agent_graph.ainvoke(initial_state)
+    print("Graph result:", final_state)
+
+if __name__ == "__main__":
+    # Run the async graph
+    asyncio.run(main())
+```

@@ -43,5 +43,6 @@ root_agent_graph = build_root_graph()
 
 
 if __name__ == "__main__":
+    """Simple CLI entry point for running the LangGraph workflow."""
     result = root_agent_graph.invoke({})
     print(result)
