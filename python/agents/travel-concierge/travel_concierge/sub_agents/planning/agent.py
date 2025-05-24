@@ -20,6 +20,7 @@ from google.genai.types import GenerateContentConfig
 from travel_concierge.shared_libraries import types
 from travel_concierge.sub_agents.planning import prompt
 from travel_concierge.tools.memory import memorize
+from travel_concierge.tools.brave_search import brave_search_tool
 
 
 itinerary_agent = Agent(
@@ -97,6 +98,7 @@ planning_agent = Agent(
         AgentTool(agent=hotel_room_selection_agent),
         AgentTool(agent=itinerary_agent),
         memorize,
+        brave_search_tool,
     ],
     generate_content_config=GenerateContentConfig(
         temperature=0.1, top_p=0.5
