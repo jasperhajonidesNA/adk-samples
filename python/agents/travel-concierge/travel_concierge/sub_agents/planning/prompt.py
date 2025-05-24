@@ -147,7 +147,9 @@ Please use the context info below for user preferences
 """
 
 
-FLIGHT_SEARCH_INSTR = """Generate search results for flights from origin to destination inferred from user query please use future dates within 3 months from today's date for the prices, limit to 4 results.
+FLIGHT_SEARCH_INSTR = """
+Search the web using the `brave_search_agent` tool for flights from origin to destination inferred from user query 
+
 - ask for any details you don't know, like origin and destination, etc.
 - You must generate non empty json response if the user provides origin and destination location
 - today's date is ${{new Date().toLocaleDateString()}}.
@@ -190,6 +192,7 @@ Return the response as a JSON object formatted like this:
 Remember that you can only use the tools to complete your tasks: 
   - `flight_search_agent`,
   - `flight_seat_selection_agent`,
+  -`brave_search_agent`
   - `hotel_search_agent`,
   - `hotel_room_selection_agent`,
   - `itinerary_agent`,
