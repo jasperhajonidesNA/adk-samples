@@ -13,4 +13,6 @@
 # limitations under the License.
 
 from . import agent
-from . import agent_langgraph
+from .agent_langgraph import root_agent_graph
+
+__all__ = ["agent", "root_agent_graph"]
