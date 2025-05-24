@@ -221,6 +221,22 @@ Instead of interacting with the concierge one turn at time. Try giving it the en
 Without specifically optimizing for such usage, this cohort of agents seem to be able to operate by themselves on your behalf with very little input.
 
 
+### Running with LangGraph
+
+In addition to the ADK workflow, the travel concierge can also be executed using
+the [LangGraph](https://python.langchain.com/docs/langgraph/) library. This
+wrapper stitches the same sub-agents together in a simple graph.
+
+To run the LangGraph version directly:
+
+```bash
+python -m travel_concierge.agent_langgraph
+```
+
+The command loads the sample itinerary specified in `.env` and executes the
+graph once, printing the resulting session state.
+
+
 ## Running Tests
 
 To run the illustrative tests and evaluations, install the extra dependencies and run `pytest`:
