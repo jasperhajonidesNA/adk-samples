@@ -522,3 +522,31 @@ This agent sample is provided for illustrative purposes only and is not intended
 This sample has not been rigorously tested, may contain bugs or limitations, and does not include features or optimizations typically required for a production environment (e.g., robust error handling, security measures, scalability, performance considerations, comprehensive logging, or advanced configuration options).
 
 Users are solely responsible for any further development, testing, security hardening, and deployment of agents based on this sample. We recommend thorough review, testing, and the implementation of appropriate safeguards before using any derived agent in a live or critical system.
+
+## Running with LangGraph
+
+This repository also provides a minimal LangGraph wrapper around the Travel Concierge agents. Once dependencies are installed you can run it directly:
+
+
+```bash
+python -m travel_concierge.agent_langgraph
+```
+
+Or import the compiled graph in your own code:
+
+```python
+import asyncio
+from travel_concierge.agent_langgraph import root_agent_graph
+
+async def main():
+    # If your graph’s nodes expect more in the state, seed it here.
+    initial_state = {}  # or e.g. {"itinerary": {}}
+
+    # Use the async entrypoint
+    final_state = await root_agent_graph.ainvoke(initial_state)
+    print("Graph result:", final_state)
+
+if __name__ == "__main__":
+    # Run the async graph
+    asyncio.run(main())
+```

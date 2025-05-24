@@ -4,6 +4,7 @@ from .agent import booking_agent
 from travel_concierge.langgraph_utils import agent_invoker
 
 
+
 def build_booking_graph() -> StateGraph:
     """Wrap the booking agent into a LangGraph graph."""
     builder = StateGraph(dict)
