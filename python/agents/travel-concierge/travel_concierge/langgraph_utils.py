@@ -13,13 +13,23 @@ def agent_invoker(agent: Any) -> Callable[[dict], dict]:
     call ``invoke`` if present, otherwise ``run`` or ``run_async``.
     """
 
+    async def _consume_async_gen(agen):
+        """Iterate an async generator and return the last yielded value."""
+        result = None
+        async for item in agen:
+            result = item
+        return result
+
     def _invoke(state: dict) -> dict:
         if hasattr(agent, "invoke"):
             return agent.invoke(state)
         if hasattr(agent, "run"):
             return agent.run(state)
         if hasattr(agent, "run_async"):
-            return asyncio.run(agent.run_async(state))
+            out = agent.run_async(state)
+            if hasattr(out, "__aiter__"):
+                return asyncio.run(_consume_async_gen(out))
+            return asyncio.run(out)
         raise AttributeError(f"{type(agent).__name__} has no callable interface")
 
     return _invoke
