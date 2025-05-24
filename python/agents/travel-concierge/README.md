@@ -506,3 +506,22 @@ This agent sample is provided for illustrative purposes only and is not intended
 This sample has not been rigorously tested, may contain bugs or limitations, and does not include features or optimizations typically required for a production environment (e.g., robust error handling, security measures, scalability, performance considerations, comprehensive logging, or advanced configuration options).
 
 Users are solely responsible for any further development, testing, security hardening, and deployment of agents based on this sample. We recommend thorough review, testing, and the implementation of appropriate safeguards before using any derived agent in a live or critical system.
+
+## Running with LangGraph
+
+This repository also provides a minimal LangGraph workflow that mirrors the
+functionality of the ADK implementation.
+
+Run the LangGraph version directly:
+
+```bash
+python -m travel_concierge.agent_langgraph
+```
+
+Or import the compiled graph in your own code:
+
+```python
+from travel_concierge.agent_langgraph import root_agent_graph
+state = root_agent_graph.invoke({})
+print(state)
+```
