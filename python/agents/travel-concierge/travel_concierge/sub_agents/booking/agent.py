@@ -19,6 +19,7 @@ from google.adk.tools.agent_tool import AgentTool
 from google.genai.types import GenerateContentConfig
 
 from travel_concierge.sub_agents.booking import prompt
+from travel_concierge.tools.brave_search import brave_search_tool
 
 
 create_reservation = Agent(
@@ -53,6 +54,7 @@ booking_agent = Agent(
         AgentTool(agent=create_reservation),
         AgentTool(agent=payment_choice),
         AgentTool(agent=process_payment),
+        brave_search_tool,
     ],
     generate_content_config=GenerateContentConfig(
         temperature=0.0, top_p=0.5

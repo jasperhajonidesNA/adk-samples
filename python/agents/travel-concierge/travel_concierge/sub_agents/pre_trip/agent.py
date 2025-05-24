@@ -19,6 +19,7 @@ from google.adk.tools.agent_tool import AgentTool
 from travel_concierge.shared_libraries import types
 from travel_concierge.sub_agents.pre_trip import prompt
 from travel_concierge.tools.search import google_search_grounding
+from travel_concierge.tools.brave_search import brave_search_tool
 
 
 what_to_pack_agent = Agent(
@@ -37,5 +38,9 @@ pre_trip_agent = Agent(
     name="pre_trip_agent",
     description="Given an itinerary, this agent keeps up to date and provides relevant travel information to the user before the trip.",
     instruction=prompt.PRETRIP_AGENT_INSTR,
-    tools=[google_search_grounding, AgentTool(agent=what_to_pack_agent)],
+    tools=[
+        google_search_grounding,
+        brave_search_tool,
+        AgentTool(agent=what_to_pack_agent),
+    ],
 )

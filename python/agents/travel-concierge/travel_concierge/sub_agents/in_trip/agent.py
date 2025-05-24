@@ -26,6 +26,7 @@ from travel_concierge.sub_agents.in_trip.tools import (
 )
 
 from travel_concierge.tools.memory import memorize
+from travel_concierge.tools.brave_search import brave_search_tool
 
 
 # This sub-agent is expected to be called every day closer to the trip, and frequently several times a day during the trip.
@@ -34,6 +35,7 @@ day_of_agent = Agent(
     name="day_of_agent",
     description="Day_of agent is the agent handling the travel logistics of a trip.",
     instruction=transit_coordination,
+    tools=[brave_search_tool],
 )
 
 
@@ -42,7 +44,12 @@ trip_monitor_agent = Agent(
     name="trip_monitor_agent",
     description="Monitor aspects of a itinerary and bring attention to items that necessitate changes",
     instruction=prompt.TRIP_MONITOR_INSTR,
-    tools=[flight_status_check, event_booking_check, weather_impact_check],
+    tools=[
+        flight_status_check,
+        event_booking_check,
+        weather_impact_check,
+        brave_search_tool,
+    ],
     output_key="daily_checks",  # can be sent via email.
 )
 
@@ -56,7 +63,8 @@ in_trip_agent = Agent(
         trip_monitor_agent
     ],  # This can be run as an AgentTool. Illustrate as an Agent for demo purpose.
     tools=[
-        AgentTool(agent=day_of_agent), 
-        memorize
+        AgentTool(agent=day_of_agent),
+        memorize,
+        brave_search_tool,
     ],
 )
