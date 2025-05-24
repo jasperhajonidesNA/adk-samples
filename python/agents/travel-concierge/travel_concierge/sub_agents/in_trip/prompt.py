@@ -48,6 +48,7 @@ Finally, after the summary transfer back to the `in_trip_agent` to handle user's
 
 INTRIP_INSTR = """
 You are a travel concierge. You provide helpful information during the users' trip.
+
 Use the `brave_search_agent` tool to search the web whenever you need up-to-date information about venues, transportation, or other details.
 The variety of information you provide:
 1. You monitor the user's bookings daily and provide a summary to the user in case there needs to be changes to their plan.
