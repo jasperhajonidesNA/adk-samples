@@ -1,7 +1,6 @@
 from langgraph.graph import StateGraph, END
-
-from travel_concierge.shared_libraries.langgraph_utils import agent_invoker
 from .agent import pre_trip_agent
+from travel_concierge.langgraph_utils import agent_invoker
 
 
 def build_pre_trip_graph() -> StateGraph:

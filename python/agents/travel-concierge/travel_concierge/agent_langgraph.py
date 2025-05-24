@@ -9,14 +9,22 @@ from travel_concierge.sub_agents.post_trip.agent_langgraph import post_trip_agen
 from travel_concierge.sub_agents.pre_trip.agent_langgraph import pre_trip_agent_graph
 
 
+class _CallbackContextWrapper:
+    """Minimal adapter providing a ``state`` attribute for memory helpers."""
+
+    def __init__(self, state: dict):
+        self.state = state
+
+
 def _load_itinerary(state: dict) -> dict:
-    """Load precreated itinerary into the session state."""
-    _load_precreated_itinerary(state)
+    """Load a precreated itinerary into the session state."""
+    ctx = _CallbackContextWrapper(state)
+    _load_precreated_itinerary(ctx)
     return state
 
 
 def build_root_graph() -> StateGraph:
-    """Construct the travel concierge graph using LangGraph."""
+    """Construct the travel concierge workflow using LangGraph."""
     builder = StateGraph(dict)
 
     builder.add_node("load_itinerary", _load_itinerary)
@@ -43,6 +51,7 @@ root_agent_graph = build_root_graph()
 
 
 if __name__ == "__main__":
-    """Simple CLI entry point for running the LangGraph workflow."""
-    result = root_agent_graph.invoke({})
-    print(result)
+    # Execute the graph once and print the resulting state.
+    final_state = root_agent_graph.invoke({})
+    print(final_state)
+

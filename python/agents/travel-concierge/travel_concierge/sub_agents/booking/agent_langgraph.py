@@ -1,8 +1,8 @@
 from langgraph.graph import StateGraph, END
 
-from travel_concierge.shared_libraries.langgraph_utils import agent_invoker
-
 from .agent import booking_agent
+from travel_concierge.langgraph_utils import agent_invoker
+
 
 
 def build_booking_graph() -> StateGraph:
