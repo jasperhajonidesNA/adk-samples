@@ -44,8 +44,9 @@ Expand on the "Key Components" from above.
 *   **Tools:**
     * `map_tool` - retrieves lat/long; geocoding an address with the Google Map API.
     * `memorize` - a function to memorize information from the dialog that are important to trip planning and to provide in-trip support.
-*   **AgentTools:**  
+*   **AgentTools:**
     * `google_search_grounding` - used in the example for pre-trip information gather such as visa, medical, travel advisory...etc.
+    * `brave_search_agent` - performs web search using the Brave Search API for up-to-date information.
     * `what_to_pack` - suggests what to pack for the trip given the origin and destination.
     * `place_agent` - this recommends destinations.
     * `poi_agent` - this suggests activities given a destination.
@@ -130,6 +131,8 @@ Expand on the "Key Components" from above.
 
     # Places API
     GOOGLE_PLACES_API_KEY=__YOUR_API_KEY_HERE__
+    # Brave Search API
+    BRAVE_API_KEY=__YOUR_BRAVE_KEY_HERE__
 
     # GCS Storage Bucket name - for Agent Engine deployment test
     GOOGLE_CLOUD_STORAGE_BUCKET=YOUR_BUCKET_NAME_HERE

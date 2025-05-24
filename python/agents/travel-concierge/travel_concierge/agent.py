@@ -26,6 +26,7 @@ from travel_concierge.sub_agents.post_trip.agent import post_trip_agent
 from travel_concierge.sub_agents.pre_trip.agent import pre_trip_agent
 
 from travel_concierge.tools.memory import _load_precreated_itinerary
+from travel_concierge.tools.brave_search import brave_search_tool
 
 
 root_agent = Agent(
@@ -41,5 +42,6 @@ root_agent = Agent(
         in_trip_agent,
         post_trip_agent,
     ],
+    tools=[brave_search_tool],
     before_agent_callback=_load_precreated_itinerary,
 )
