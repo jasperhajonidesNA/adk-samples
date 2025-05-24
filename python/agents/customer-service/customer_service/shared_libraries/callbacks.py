@@ -24,6 +24,7 @@ from google.adk.tools import BaseTool
 from google.adk.agents.invocation_context import InvocationContext
 from google.adk.sessions.state import State
 from google.adk.tools.tool_context import ToolContext
+from .langsmith import traceable
 from jsonschema import ValidationError
 from customer_service.entities.customer import Customer
 
@@ -34,6 +35,7 @@ RATE_LIMIT_SECS = 60
 RPM_QUOTA = 10
 
 
+@traceable
 def rate_limit_callback(
     callback_context: CallbackContext, llm_request: LlmRequest
 ) -> None:
@@ -127,6 +129,7 @@ def lowercase_value(value):
 
 
 # Callback Methods
+@traceable
 def before_tool(
     tool: BaseTool, args: Dict[str, Any], tool_context: CallbackContext
 ):
@@ -161,6 +164,7 @@ def before_tool(
             return {"result": "I have added and removed the requested items."}
     return None
 
+@traceable
 def after_tool(
     tool: BaseTool, args: Dict[str, Any], tool_context: ToolContext, tool_response: Dict
 ) -> Optional[Dict]:
@@ -180,6 +184,7 @@ def after_tool(
   return None
 
 # checking that the customer profile is loaded as state.
+@traceable
 def before_agent(callback_context: InvocationContext):
     # In a production agent, this is set as part of the
     # session creation for the agent. 
