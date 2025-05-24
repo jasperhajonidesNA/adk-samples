@@ -18,10 +18,12 @@ import logging
 import uuid
 from datetime import datetime, timedelta
 from google.adk.tools import ToolContext
+from ..shared_libraries.langsmith import traceable
 
 logger = logging.getLogger(__name__)
 
 
+@traceable
 def send_call_companion_link(phone_number: str) -> str:
     """
     Sends a link to the user's phone number to start a video session.
@@ -42,6 +44,7 @@ def send_call_companion_link(phone_number: str) -> str:
     return {"status": "success", "message": f"Link sent to {phone_number}"}
 
 
+@traceable
 def approve_discount(discount_type: str, value: float, reason: str) -> str:
     """
     Approve the flat rate or percentage discount requested by the user.
@@ -68,6 +71,7 @@ def approve_discount(discount_type: str, value: float, reason: str) -> str:
     )
     return {"status": "ok"}
 
+@traceable
 def sync_ask_for_approval(discount_type: str, value: float, reason: str) -> str:
     """
     Asks the manager for approval for a discount.
@@ -93,6 +97,7 @@ def sync_ask_for_approval(discount_type: str, value: float, reason: str) -> str:
     return {"status": "approved"}
 
 
+@traceable
 def update_salesforce_crm(customer_id: str, details: dict) -> dict:
     """
     Updates the Salesforce CRM with customer details.
@@ -121,6 +126,7 @@ def update_salesforce_crm(customer_id: str, details: dict) -> dict:
     return {"status": "success", "message": "Salesforce record updated."}
 
 
+@traceable
 def access_cart_information(customer_id: str) -> dict:
     """
     Args:
@@ -154,6 +160,7 @@ def access_cart_information(customer_id: str) -> dict:
     return mock_cart
 
 
+@traceable
 def modify_cart(
     customer_id: str, items_to_add: list[dict], items_to_remove: list[dict]
 ) -> dict:
@@ -183,6 +190,7 @@ def modify_cart(
     }
 
 
+@traceable
 def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
     """Provides product recommendations based on the type of plant.
 
@@ -237,6 +245,7 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
     return recommendations
 
 
+@traceable
 def check_product_availability(product_id: str, store_id: str) -> dict:
     """Checks the availability of a product at a specified store (or for pickup).
 
@@ -261,6 +270,7 @@ def check_product_availability(product_id: str, store_id: str) -> dict:
     return {"available": True, "quantity": 10, "store": store_id}
 
 
+@traceable
 def schedule_planting_service(
     customer_id: str, date: str, time_range: str, details: str
 ) -> dict:
@@ -303,6 +313,7 @@ def schedule_planting_service(
     }
 
 
+@traceable
 def get_available_planting_times(date: str) -> list:
     """Retrieves available planting service time slots for a given date.
 
@@ -322,6 +333,7 @@ def get_available_planting_times(date: str) -> list:
     return ["9-12", "13-16"]
 
 
+@traceable
 def send_care_instructions(
     customer_id: str, plant_type: str, delivery_method: str
 ) -> dict:
@@ -352,6 +364,7 @@ def send_care_instructions(
     }
 
 
+@traceable
 def generate_qr_code(
     customer_id: str,
     discount_value: float,
