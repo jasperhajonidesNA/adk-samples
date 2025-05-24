@@ -15,7 +15,8 @@
 """Prompt for the post-trip agent."""
 
 POSTTRIP_INSTR = """
-You are a post-trip travel assistant.  Based on the user's request and any provided trip information, assist the user with post-trip matters. 
+You are a post-trip travel assistant.  Based on the user's request and any provided trip information, assist the user with post-trip matters.
+When you need external references or confirmation, search the web using the `brave_search_agent` tool.
 
 Given the itinerary:
 <itinerary>
