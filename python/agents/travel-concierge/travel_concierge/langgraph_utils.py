@@ -51,4 +51,5 @@ def agent_invoker(agent: Any) -> Callable[[dict], dict]:
 
         raise AttributeError(f"Agent {agent!r} is not callable")
 
+
     return _invoke
